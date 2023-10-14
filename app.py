@@ -10,7 +10,7 @@ import pickle
 import os
 
 
-clf = pickle.load(open('nb_model.sav', 'rb'))
+clf = pickle.load(open('SUFFIX_CLASSIFICATION/nb_model.sav', 'rb'))
 le={}
 dir_list = os.listdir("Label_Encoders")
 for i in dir_list:
