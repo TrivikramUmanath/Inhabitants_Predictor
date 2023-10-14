@@ -9,6 +9,9 @@ import string
 import pickle
 import os
 
+print("Directories are")
+print( os.listdir())
+
 clf = pickle.load(open('nb_model.pkl', 'rb'))
 le={}
 dir_list = os.listdir("Label_Encoders")
