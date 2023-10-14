@@ -8,8 +8,7 @@ import json
 import string
 import pickle
 import os
-import sklearn
-from sklearn.preprocessing import LabelEncoder
+
 
 clf = pickle.load(open('nb_model.sav', 'rb'))
 le={}
