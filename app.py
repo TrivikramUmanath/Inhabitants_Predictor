@@ -9,7 +9,7 @@ import string
 import pickle
 import os
 
-clf = pickle.load(open('SUFFIX_CLASSIFIATION/nb_model.pkl', 'rb'))
+clf = pickle.load(open('suffix_classification/nb_model.pkl', 'rb'))
 le={}
 dir_list = os.listdir("Label_Encoders")
 for i in dir_list:
