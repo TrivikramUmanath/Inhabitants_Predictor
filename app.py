@@ -13,14 +13,14 @@ print("Directories are")
 print( os.listdir())
 
 # clf = pickle.load(open('nb_model.pkl', 'rb'))
-le={}
-dir_list = os.listdir("Label_Encoders")
-for i in dir_list:
-     key=i.split('.')[0]
-     temp="Label_Encoders/"+str(i)
-     pkl_file = open(temp, 'rb')
-     le[key] = pickle.load(pkl_file) 
-     pkl_file.close()
+# le={}
+# dir_list = os.listdir("Label_Encoders")
+# for i in dir_list:
+#      key=i.split('.')[0]
+#      temp="Label_Encoders/"+str(i)
+#      pkl_file = open(temp, 'rb')
+#      le[key] = pickle.load(pkl_file) 
+#      pkl_file.close()
 
 
 
@@ -161,6 +161,14 @@ def main():
 if __name__=='__main__':
     with open('nb_model.pkl', 'rb') as f:
         clf = pickle.load(f)
+    le={}
+    dir_list = os.listdir("Label_Encoders")
+    for i in dir_list:
+        key=i.split('.')[0]
+        temp="Label_Encoders/"+str(i)
+        pkl_file = open(temp, 'rb')
+        le[key] = pickle.load(pkl_file) 
+        pkl_file.close()
     main()
     
     
