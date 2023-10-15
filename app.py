@@ -30,6 +30,14 @@ def welcome():
 
 def preproessing(place):
     print(place)  
+    le={}
+    dir_list = os.listdir("Label_Encoders")
+    for i in dir_list:
+        key=i.split('.')[0]
+        temp="Label_Encoders/"+str(i)
+        pkl_file = open(temp, 'rb')
+        le[key] = pickle.load(pkl_file) 
+        pkl_file.close()
     place_df=pd.DataFrame(columns=le.keys())
     # Python3 code to demonstrate working of
 # Get all substrings of string
@@ -136,6 +144,8 @@ def preproessing(place):
     return finale
 
 def predict(place,place_df):
+    with open('nb_model.pkl', 'rb') as f:
+        clf = pickle.load(f)
     prediction=place+(clf.predict(place_df))[0]
     return prediction
 
@@ -159,16 +169,6 @@ def main():
     st.success(result)
 
 if __name__=='__main__':
-    with open('nb_model.pkl', 'rb') as f:
-        clf = pickle.load(f)
-    le={}
-    dir_list = os.listdir("Label_Encoders")
-    for i in dir_list:
-        key=i.split('.')[0]
-        temp="Label_Encoders/"+str(i)
-        pkl_file = open(temp, 'rb')
-        le[key] = pickle.load(pkl_file) 
-        pkl_file.close()
     main()
     
     
