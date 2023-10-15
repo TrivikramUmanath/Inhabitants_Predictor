@@ -31,11 +31,11 @@ def welcome():
 def preproessing(place):
     print(place)  
     le={}
-    dir_list = os.listdir("/Label_Encoders")
+    dir_list = os.listdir("Label_Encoders")
     print(dir_list)
     for i in dir_list:
         key=i.split('.')[0]
-        temp="/Label_Encoders/"+str(i)
+        temp="Label_Encoders/"+str(i)
         pkl_file = open(temp, 'rb')
         le[key] = pickle.load(pkl_file) 
         pkl_file.close()
