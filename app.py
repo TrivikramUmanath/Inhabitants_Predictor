@@ -6,7 +6,7 @@ import pandas as pd
 import streamlit as st 
 import json
 import string
-import pickle
+import pickle5 as pickle
 import os
 
 print("Directories are")
