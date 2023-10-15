@@ -12,6 +12,8 @@ import os
 print("Directories are")
 print( os.listdir())
 
+pickle_in = open("nb_model.pkl","rb")
+clf=pickle.load(pickle_in)
 # clf = pickle.load(open('nb_model.pkl', 'rb'))
 # le={}
 # dir_list = os.listdir("Label_Encoders")
