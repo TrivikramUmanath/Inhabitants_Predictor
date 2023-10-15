@@ -31,7 +31,7 @@ def welcome():
 def preproessing(place):
     print(place)  
     le={}
-    dir_list = os.listdir("Label_Encoders")
+    dir_list = os.listdir("/mount/src/suffix_classification/Label_Encoders")
     print(dir_list)
     for i in dir_list:
         key=i.split('.')[0]
