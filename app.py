@@ -14,10 +14,41 @@ import os
 
 loaded_model = pickle.load(open('trained_model.sav', 'rb'))
 
+# Opening JSON file
+f = open('Key.json')
+ 
+# returns JSON object as 
+# a dictionary
+data = json.load(f)
+ 
+# Iterating through the json
+# list
+ 
+# Closing file
+f.close()
+
+Key= data
+
+
+Distkey=list(Key.keys())
 
 def welcome():
     return "Welcome All"
 
+
+def sufjoin(n,s):
+    vowels = ['i','e','u','a','o']
+    jname = n + s
+    if n[-1] in vowels and s[0] in vowels:
+        if vowels.index(n[-1]) >= vowels.index(s[0]):
+            jname = n[:-1]+s
+        else:
+            jname = n + s
+    elif n[-1] not in vowels and s[0] not in vowels:
+            jname = n[:-1]+s
+    elif n[-1] == "y" and s[0] == "i":
+            jname = n[:-1]+s
+    return jname    
 
 def preproessing(place):
     print(place)  
@@ -136,7 +167,19 @@ def preproessing(place):
     return finale
 
 def predict(place,place_df):
-    prediction=place+(loaded_model.predict(place_df))[0]
+    try:
+        prediction=place+(loaded_model.predict(place_df))[0]
+    except Exception as e:
+        place = place.lower().capitalize()
+        q = 4
+        ename = place[-q:]
+        if ename in Distkey:
+            prediction = sufjoin(place,Key[ename])
+        else:
+            while ename not in Distkey:
+                ename = ename[1:]
+            prediction = sufjoin(place,Key[ename])
+
     return prediction
 
   
