@@ -53,6 +53,7 @@ def sufjoin(n,s):
 def preproessing(place):
     print(place)  
     le={}
+    flag=0
     dir_list = os.listdir("Label_Encoders")
     print(dir_list)
     for i in dir_list:
@@ -160,10 +161,13 @@ def preproessing(place):
     place_df["Third_Last_Letter_Type"]=third_last_letter_type
     place_df["Fourth_Last_Letter"]=fourth_last_letter
     place_df["Fourth_Last_Letter_Type"]=fourth_last_letter_type
-    for key in le.keys():
-        encoder = le[key]
-        place_df[key] = encoder.transform(place_df[key])
-    finale=place_df[["First_Letter","First_Two_Letter","First_Three_Letter","First_Four_Letter","Last_Letter","Last_Two_Letter","Last_Three_Letter","Last_Four_Letter","Second_Letter","Second_Letter_Type","Third_Letter","Third_Letter_Type","Fourth_Letter","Fourth_Letter_Type","Second_Last_Letter","Second_Last_Letter_Type","Third_Last_Letter","Third_Last_Letter_Type","Fourth_Last_Letter","Fourth_Last_Letter_Type","Length"]]
+    try:
+        for key in le.keys():
+            encoder = le[key]
+            place_df[key] = encoder.transform(place_df[key])
+        finale=place_df[["First_Letter","First_Two_Letter","First_Three_Letter","First_Four_Letter","Last_Letter","Last_Two_Letter","Last_Three_Letter","Last_Four_Letter","Second_Letter","Second_Letter_Type","Third_Letter","Third_Letter_Type","Fourth_Letter","Fourth_Letter_Type","Second_Last_Letter","Second_Last_Letter_Type","Third_Last_Letter","Third_Last_Letter_Type","Fourth_Last_Letter","Fourth_Last_Letter_Type","Length"]]
+    except Exception as e:
+        return flag
     return finale
 
 def predict(place,place_df):
