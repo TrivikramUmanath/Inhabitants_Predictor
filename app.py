@@ -9,21 +9,10 @@ import string
 import pickle
 import os
 
-print("Directories are")
-print( os.listdir())
 
-pickle_in = open("nb_model.pkl","rb")
-clf=pickle.load(pickle_in)
-# clf = pickle.load(open('nb_model.pkl', 'rb'))
-# le={}
-# dir_list = os.listdir("Label_Encoders")
-# for i in dir_list:
-#      key=i.split('.')[0]
-#      temp="Label_Encoders/"+str(i)
-#      pkl_file = open(temp, 'rb')
-#      le[key] = pickle.load(pkl_file) 
-#      pkl_file.close()
 
+
+loaded_model = pickle.load(open('trained_model.sav', 'rb'))
 
 
 def welcome():
@@ -147,9 +136,7 @@ def preproessing(place):
     return finale
 
 def predict(place,place_df):
-    with open('/nb_model.pkl', 'rb') as f:
-        clf = pickle.load(f)
-    prediction=place+(clf.predict(place_df))[0]
+    prediction=place+(loaded_model.predict(place_df))[0]
     return prediction
 
   
